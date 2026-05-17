@@ -1,33 +1,37 @@
-# 用户协议 (Terms of Use)
+# User Agreement / 用户服务协议
 
-**生效日期：2026年5月17日**
+## 中文版
 
-感谢您选择 NVR 软件。在您使用本软件之前，请仔细阅读本用户协议。
+### 一、 服务说明与接纳
+本《用户服务协议》是您与 NVR 开发团队之间关于您下载、安装并使用 NVR 软件所订立的协议。本软件为本地化网络摄像机管理工具，不提供云端中转服务。一旦您安装并使用本软件，即代表您已完全阅读、理解并接受本协议的全部条款。
 
-### 一、 软件许可与使用
-1. **许可**：开发者授予您一项个人的、不可转让的、非排他性的许可，以在您合法拥有的 iOS 设备上使用本软件。
-2. **变废为宝主旨**：本软件支持 iOS 15 及以上系统，旨在帮助用户利用闲置的老旧 iOS 设备打造私有 NVR 监控系统。
-3. **合法使用**：您承诺遵守所有适用的法律法规，不将本软件用于任何非法监控、侵犯他人隐私或非法传播视频的活动。
+### 二、 设备授权与合规使用
+1. 用户在使用本软件连接、监控并录制任何摄像头前，应保证对相关硬件设备拥有完全合法的控制或使用授权。
+2. 用户严禁将本软件用于任何非法窥探或侵害他人隐私的场所。如因用户私自侵犯他人隐私或违反法律法规产生的全部法律后果，均由用户自行承担。
 
-### 二、 免责声明与责任限制
-1. **按现状提供**：本软件按“现状”提供，开发者不保证软件在所有网络环境和所有型号的摄像头下都能绝对稳定运行。
-2. **数据安全风险**：鉴于无线网络、摄像头硬件、iOS 设备老化的非绝对稳定性，因设备断电、网络波动、硬件损坏或存储介质损坏导致的数据丢失或损坏，开发者不承担任何赔偿责任。
-3. **本地存储**：本软件采用纯本地存储，开发者无法访问您的数据，因此无法为您恢复因您误删或设备损坏而丢失的录像。
+### 三、 本地存储与资源消耗
+1. 本软件将在您的 iOS 本地设备中存储视频。视频存储会持续消耗您的设备存储容量，请合理配置保留天数。
+2. 视频解码、播放和录制属于高算力密集操作，设备在使用过程中出现一定幅度的发热属于正常硬件物理特性。
+
+### 四、 免责与责任限制
+1. 本软件按“现状”提供，开发者不保证软件在所有网络环境下均能绝对稳定运行。
+2. 鉴于无线网络和摄像头硬件的非绝对稳定性，由于设备老化、局域网波动、断电或物理储存损坏等因素造成的录像数据丢失或损坏，本软件不承担赔偿责任。
 
 ---
 
-# Terms of Use
+## English Version
 
-**Effective Date: May 17, 2026**
+### 1. Service Description and Acceptance
+This User Service Agreement is an agreement between you and the NVR development team regarding your download, installation, and use of the NVR software. This software is a localized network camera management tool and does not provide cloud relay services. By installing and using this software, you fully read, understand, and accept all terms of this Agreement.
 
-Thank you for choosing NVR. Please read these Terms of Use carefully before using the software.
+### 2. Device Authorization and Compliant Use
+1. Before connecting, monitoring, and recording any camera, users should ensure they have full legal control or authorization for the relevant hardware devices.
+2. Users are strictly prohibited from using this software in any place that illegally prys into or infringes on the privacy of others. All legal consequences are borne by users themselves.
 
-### 1. Software License and Use
-1. **License**: The developer grants you a personal, non-transferable, non-exclusive license to use this software on iOS devices you legally own.
-2. **Repurpose Theme**: This software supports iOS 15 and above, aiming to help users utilize idle, older iOS devices to build a private NVR monitoring system.
-3. **Lawful Use**: You promise to comply with all applicable laws and regulations and not use this software for any illegal monitoring, violation of others' privacy, or illegal distribution of video.
+### 3. Local Storage and Resource Consumption
+1. This software stores video on your local iOS device. Video storage will continue to consume your device's storage capacity. Please configure retention days reasonably.
+2. Video decoding, playback, and recording are high-computing-intensive operations. It is normal for the device to heat up during use.
 
-### 2. Disclaimer and Limitation of Liability
-1. **As-Is**: This software is provided "as is", and the developer does not guarantee that the software will run absolutely stably in all network environments and with all camera models.
-2. **Data Security Risk**: In view of the non-absolute stability of wireless networks, camera hardware, and aging iOS devices, the developer is not liable for data loss or damage caused by power failure, network fluctuations, hardware damage, or storage media damage.
-3. **Local Storage**: This software uses pure local storage. The developer cannot access your data and therefore cannot recover recordings lost due to your accidental deletion or device damage.
+### 4. Disclaimer and Limitation of Liability
+1. This software is provided 'as is', and developers do not guarantee that the software will run absolutely stably in all network environments.
+2. In view of the non-absolute stability of wireless networks and camera hardware, data loss or damage caused by equipment aging, network fluctuations, power failure, or physical storage damage are not liable for compensation.
