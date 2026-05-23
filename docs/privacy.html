@@ -300,33 +300,22 @@
     <!-- Privacy Policy Document Card -->
     <main class="content-card">
       
-      <h2 data-i18n="section_1_h2">1. Introduction</h2>
-      <p data-i18n="section_1_p1">Your privacy is of utmost importance to us. This Privacy Policy outlines how the <strong>NVR</strong> application handles your data. NVR is a professional network video recorder client designed to discover, stream, and manage local ONVIF and RTSP monitoring cameras.</p>
+      <h2 data-i18n="section_1_h2">1. 100% Localized Closed Loop</h2>
+      <p data-i18n="section_1_p1">Your privacy and security are paramount to us. NVR adopts a 100% localized closed-loop architecture. We solemnly promise: This software has no third-party cloud servers, and absolutely does not collect, cache, or upload any of your streaming video streams, monitoring sounds, recording files, or personal information. All data streams interact directly with cameras within your local network and are stored locally.</p>
       
-      <h2 data-i18n="section_2_h2">2. Complete Local Processing (100% Offline)</h2>
-      <p data-i18n="section_2_p1">NVR is designed as a standalone, localized software client. <strong>We do NOT operate any cloud servers, user accounts, middleman services, or cloud-based stream transcoders.</strong></p>
+      <h2 data-i18n="section_2_h2">2. Credential Security</h2>
+      <p data-i18n="section_2_p1">Sensitive credentials such as accounts, passwords, or IP addresses entered by you are directly stored in your iOS local sandbox or Apple system Keychain. This data is only used for local connection authentication.</p>
+
+      <h2 data-i18n="section_3_h2">3. System Permission Calling</h2>
+      <p data-i18n="section_3_p1">To provide normal functions, this software needs to call the following system permissions:</p>
       <ul>
-        <li data-i18n="section_2_li1"><strong>No Account Required:</strong> You do not need to register an account, sign in, or provide any personal details to use the application.</li>
-        <li data-i18n="section_2_li2"><strong>Direct Connections:</strong> All connections, handshakes, and video stream requests occur directly between your device and your local IP camera. Your credentials (such as camera usernames and passwords) are encrypted and stored solely on your own device's secure local keychain/sandboxed database.</li>
-        <li data-i18n="section_2_li3"><strong>No Stream Uploads:</strong> NVR never uploads, relays, or intercepts your camera stream data. Your surveillance video stays strictly inside your local home or office network.</li>
+        <li data-i18n="section_3_li1"><strong>[Local Network]:</strong> Used to discover and connect camera devices under the same Wi-Fi.</li>
+        <li data-i18n="section_3_li2"><strong>[Photo Library]:</strong> Required when you save screenshots or videos to the system album.</li>
+        <li data-i18n="section_3_li3"><strong>[File Sharing]:</strong> This software supports accessing your locally saved recordings through the system 'Files' app.</li>
       </ul>
 
-      <h2 data-i18n="section_3_h2">3. Device Permissions & How They Are Used</h2>
-      <p data-i18n="section_3_p1">To provide video monitoring features, NVR requires specific system-level permissions. We only request permissions necessary for core operations:</p>
-      <ul>
-        <li data-i18n="section_3_li1"><strong>Local Network Access:</strong> Required to scan, discover, configure, and communicate with IP cameras inside the same Wi-Fi or Local Area Network (LAN). Without this, NVR cannot connect to your cameras.</li>
-        <li data-i18n="section_3_li2"><strong>Photo Library (Write Access):</strong> Required only when you explicitly press the "Save Snapshot" or "Record Clip" buttons. We use this permission solely to export these media files directly into your native Photos app.</li>
-        <li data-i18n="section_3_li3"><strong>Files App / Sandboxed Storage:</strong> Required to store configuration files and manually exported continuous recording files locally on your device's sandbox.</li>
-      </ul>
-
-      <h2 data-i18n="section_4_h2">4. No Analytics or Third-Party SDKs</h2>
-      <p data-i18n="section_4_p1">We do not bundle any advertising networks, tracking tools, behavioral analysis software, or third-party analytic services (such as Google Analytics or Flurry) inside our app. Your interactions with your cameras and within the app interface remain entirely private and anonymous.</p>
-
-      <h2 data-i18n="section_5_h2">5. Changes to This Policy</h2>
-      <p data-i18n="section_5_p1">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date above.</p>
-
-      <h2 data-i18n="section_6_h2">6. Contact Us</h2>
-      <p><span data-i18n="section_6_p1">If you have any questions or suggestions regarding our Privacy Policy, please do not hesitate to contact us directly at</span> <a href="mailto:zhenyuwang94@gmail.com" style="color: var(--accent-purple); text-decoration: none; font-weight: 500;">zhenyuwang94@gmail.com</a>.</p>
+      <h2 data-i18n="section_4_h2">4. No Third-party SDK</h2>
+      <p data-i18n="section_4_p1">This software does not integrate any third-party commercial SDKs such as advertising tracking and behavioral data statistics, ensuring that the software runs absolutely pure and safe.</p>
 
     </main>
 
@@ -338,31 +327,24 @@
 
   <!-- Multi-Language JS -->
   <script>
-    // i18n Translation Dictionary for privacy page
+    // i18n Translation Dictionary based exactly on existing NVR/PRIVACY.md
     const translations = {
       en: {
         page_title: "NVR - Privacy Policy",
         back_to_support: "Back to Support",
         h1_title: "Privacy Policy",
         last_updated: "Last updated: May 23, 2026",
-        section_1_h2: "1. Introduction",
-        section_1_p1: "Your privacy is of utmost importance to us. This Privacy Policy outlines how the <strong>NVR</strong> application handles your data. NVR is a professional network video recorder client designed to discover, stream, and manage local ONVIF and RTSP monitoring cameras.",
-        section_2_h2: "2. Complete Local Processing (100% Offline)",
-        section_2_p1: "NVR is designed as a standalone, localized software client. <strong>We do NOT operate any cloud servers, user accounts, middleman services, or cloud-based stream transcoders.</strong>",
-        section_2_li1: "<strong>No Account Required:</strong> You do not need to register an account, sign in, or provide any personal details to use the application.",
-        section_2_li2: "<strong>Direct Connections:</strong> All connections, handshakes, and video stream requests occur directly between your device and your local IP camera. Your credentials (such as camera usernames and passwords) are encrypted and stored solely on your own device's secure local keychain/sandboxed database.",
-        section_2_li3: "<strong>No Stream Uploads:</strong> NVR never uploads, relays, or intercepts your camera stream data. Your surveillance video stays strictly inside your local home or office network.",
-        section_3_h2: "3. Device Permissions & How They Are Used",
-        section_3_p1: "To provide video monitoring features, NVR requires specific system-level permissions. We only request permissions necessary for core operations:",
-        section_3_li1: "<strong>Local Network Access:</strong> Required to scan, discover, configure, and communicate with IP cameras inside the same Wi-Fi or Local Area Network (LAN). Without this, NVR cannot connect to your cameras.",
-        section_3_li2: "<strong>Photo Library (Write Access):</strong> Required only when you explicitly press the \"Save Snapshot\" or \"Record Clip\" buttons. We use this permission solely to export these media files directly into your native Photos app.",
-        section_3_li3: "<strong>Files App / Sandboxed Storage:</strong> Required to store configuration files and manually exported continuous recording files locally on your device's sandbox.",
-        section_4_h2: "4. No Analytics or Third-Party SDKs",
-        section_4_p1: "We do not bundle any advertising networks, tracking tools, behavioral analysis software, or third-party analytic services (such as Google Analytics or Flurry) inside our app. Your interactions with your cameras and within the app interface remain entirely private and anonymous.",
-        section_5_h2: "5. Changes to This Policy",
-        section_5_p1: "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date above.",
-        section_6_h2: "6. Contact Us",
-        section_6_p1: "If you have any questions or suggestions regarding our Privacy Policy, please do not hesitate to contact us directly at",
+        section_1_h2: "1. 100% Localized Closed Loop",
+        section_1_p1: "Your privacy and security are paramount to us. NVR adopts a 100% localized closed-loop architecture. We solemnly promise: This software has no third-party cloud servers, and absolutely does not collect, cache, or upload any of your streaming video streams, monitoring sounds, recording files, or personal information. All data streams interact directly with cameras within your local network and are stored locally.",
+        section_2_h2: "2. Credential Security",
+        section_2_p1: "Sensitive credentials such as accounts, passwords, or IP addresses entered by you are directly stored in your iOS local sandbox or Apple system Keychain. This data is only used for local connection authentication.",
+        section_3_h2: "3. System Permission Calling",
+        section_3_p1: "To provide normal functions, this software needs to call the following system permissions:",
+        section_3_li1: "<strong>[Local Network]:</strong> Used to discover and connect camera devices under the same Wi-Fi.",
+        section_3_li2: "<strong>[Photo Library]:</strong> Required when you save screenshots or videos to the system album.",
+        section_3_li3: "<strong>[File Sharing]:</strong> This software supports accessing your locally saved recordings through the system 'Files' app.",
+        section_4_h2: "4. No Third-party SDK",
+        section_4_p1: "This software does not integrate any third-party commercial SDKs such as advertising tracking and behavioral data statistics, ensuring that the software runs absolutely pure and safe.",
         copyright: "© 2026 Timozer. All rights reserved."
       },
       zh: {
@@ -370,24 +352,17 @@
         back_to_support: "返回支持中心",
         h1_title: "隐私政策",
         last_updated: "最近更新日期：2026年5月23日",
-        section_1_h2: "1. 概述",
-        section_1_p1: "您的隐私对我们至关重要。本《隐私政策》概述了 <strong>NVR</strong> 应用程序如何处理您的数据。NVR 是一款专业的网络视频录像机客户端，旨在自动发现、播放和管理局域网中的 ONVIF 和 RTSP 监控摄像机。",
-        section_2_h2: "2. 完全本地化处理（100% 离线独立运行）",
-        section_2_p1: "NVR 是一套完全本地化的独立客户端 software。**我们不运营、不维护任何云端服务器、用户账户、中转代理服务或云视频转码程序。**",
-        section_2_li1: "<strong>无需账号：</strong> 您无需注册账户、登录或提供任何个人隐私信息即可直接运行该软件。",
-        section_2_li2: "<strong>直接连接：</strong> 所有网络连接、握手交互与流媒体请求均完全在您的设备与您的局域网摄像头之间直接完成。您为摄像头输入的登录凭据（如用户名和密码）全部进行高强度加密并仅保存在您本地的安全钥匙串或沙盒数据库中。",
-        section_2_li3: "<strong>无流媒体上传：</strong> NVR 绝不会传输、中转或截留您的摄像头视频流。您的监控视频数据绝对不会离开您的家庭或办公局域网。",
-        section_3_h2: "3. 设备权限申请与合理性使用说明",
-        section_3_p1: "为实现视频监控与录制的核心功能，NVR 需要向系统申请特定权限。我们仅在必要时请求最少量的权限：",
-        section_3_li1: "<strong>本地网络权限：</strong> 用于扫描、发现、建立局域网内监控相机的 ONVIF / RTSP 连接。如果不启用此权限，NVR 将无法与任何本地摄像头建立通信。",
-        section_3_li2: "<strong>照片库（写入权限）：</strong> 仅当您主动触发“保存截图”或“录制视频片段”到相册时才会请求。我们使用该权限仅用于将这些媒体文件导出至您的系统原生相册中。",
-        section_3_li3: "<strong>文件应用/沙盒存储：</strong> 用于在应用的受限沙盒内保存基本配置参数以及您手动导出的连续录像段。",
-        section_4_h2: "4. 零追踪、零第三方分析广告 SDK",
-        section_4_p1: "我们的应用程序内没有捆绑任何广告展示插件、追踪分析工具、用户行为分析软件或第三方数据统计分析组件（如谷歌分析或 Flurry 等）。您与摄像头的交互以及在 App 内的所有操作均保持完全的隐私与匿名。",
-        section_5_h2: "5. 隐私政策的变更",
-        section_5_p1: "我们可能会不时更新我们的《隐私政策》。任何关于政策的修改我们都将在本网页进行更新，并同步修正页面顶部的“最近更新日期”。",
-        section_6_h2: "6. 联系我们",
-        section_6_p1: "如果您对本《隐私政策》有任何疑问、意见或建议，请随时通过以下电子邮箱直接与我们取得联系：",
+        section_1_h2: "一、 100% 本地化闭环",
+        section_1_p1: "您的隐私安全对我们至关重要。NVR 采用 100% 本地化闭环架构。我们向您郑重承诺：本软件未设立任何第三方云端服务器，绝对不收集、不缓存、不上传您的任何流媒体视频流、监控声音、录像文件或个人信息。所有数据流均在您的本地网络内直接与摄像头交互并本地存储。",
+        section_2_h2: "二、 凭证安全",
+        section_2_p1: "您在添加摄像头时输入的账号、密码或 IP 地址等敏感凭证，均直接存储在您的 iOS 本地沙盒或 Apple 系统 Keychain 中。这些数据仅用于本地连接鉴权，外界无任何途径获取。",
+        section_3_h2: "三、 系统权限调用",
+        section_3_p1: "为了提供正常的功能，本软件需要调用以下系统权限：",
+        section_3_li1: "<strong>【局域网/本地网络】：</strong>用于发现和连接您相同 Wi-Fi 下的摄像头设备。",
+        section_3_li2: "<strong>【照片库权限】：</strong>当您保存截图或视频至系统相册时需要此权限。",
+        section_3_li3: "<strong>【文件共享】：</strong>本软件支持通过系统“文件”App访问您本地保存的录像。",
+        section_4_h2: "四、 无第三方 SDK",
+        section_4_p1: "本软件未集成任何广告追踪、行为数据统计分析等侵害隐私的第三方商业化 SDK，确保软件运行绝对纯净安全。",
         copyright: "© 2026 Timozer. 所有权利保留。"
       }
     };
