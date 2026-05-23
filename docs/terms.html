@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="page_title">NVR - Privacy Policy</title>
-  <meta name="description" content="Privacy Policy for NVR application. Learn how we handle your data and respect your privacy.">
+  <title data-i18n="page_title">NVR - Terms of Service</title>
+  <meta name="description" content="User Agreement and Terms of Service for NVR application. Read our terms and conditions.">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -191,7 +191,7 @@
       -webkit-backdrop-filter: blur(20px);
     }
 
-    /* Privacy text styling */
+    /* Privacy/Terms text styling */
     .content-card h2 {
       font-family: var(--font-title);
       font-size: 1.4rem;
@@ -293,35 +293,21 @@
 
     <!-- Header -->
     <header>
-      <h1 data-i18n="h1_title">Privacy Policy</h1>
+      <h1 data-i18n="h1_title">User Agreement</h1>
       <p class="last-updated" data-i18n="last_updated">Last updated: May 23, 2026</p>
     </header>
 
-    <!-- Privacy Policy Document Card (Automatically populated by script) -->
-    <main class="content-card" id="privacyContent" data-i18n="privacy_content">
-      <h2>1. 100% Localized Closed Loop</h2>
-      <p>Your privacy and security are paramount to us. NVR adopts a 100% localized closed-loop architecture. We solemnly promise: This software has no third-party cloud servers, and absolutely does not collect, cache, or upload any of your streaming video streams, monitoring sounds, recording files, or personal information. All data streams interact directly with cameras within your local network and are stored locally.</p>
-      
-      <h2>2. Credential Security</h2>
-      <p>Sensitive credentials such as accounts, passwords, or IP addresses entered by you are directly stored in your iOS local sandbox or Apple system Keychain. This data is only used for local connection authentication.</p>
-
-      <h2>3. System Permission Calling</h2>
-      <p>To provide normal functions, this software needs to call the following system permissions:</p>
-      <ul>
-        <li><strong>[Local Network]:</strong> Used to discover and connect camera devices under the same Wi-Fi.</li>
-        <li><strong>[Photo Library]:</strong> Required when you save screenshots or videos to the system album.</li>
-        <li><strong>[File Sharing]:</strong> This software supports accessing your locally saved recordings through the system 'Files' app.</li>
-      </ul>
-
-      <h2>4. No Third-party SDK</h2>
-      <p>This software does not integrate any third-party commercial SDKs such as advertising tracking and behavioral data statistics, ensuring that the software runs absolutely pure and safe.</p>
+    <!-- Terms of Service Content Card (Automatically populated by script) -->
+    <main class="content-card" id="termsContent" data-i18n="terms_content">
+      <h2>1. Service Description and Acceptance</h2>
+      <p>This User Service Agreement is an agreement between you and the NVR development team regarding your download, installation, and use of the NVR software. This software is a localized network camera management tool and does not provide cloud relay services. By installing and using this software, you fully read, understand, and accept all terms of this Agreement.</p>
     </main>
 
     <!-- Footer -->
     <footer>
       <div class="footer-links" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem;">
         <a class="footer-link" href="index.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s ease;" data-i18n="back_to_support">Back to Support</a>
-        <a class="footer-link" href="terms.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s ease;" data-i18n="terms_link">Terms of Service</a>
+        <a class="footer-link" href="privacy.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s ease;" data-i18n="privacy_link">Privacy Policy</a>
       </div>
       <p data-i18n="copyright">© 2026 Timozer. All rights reserved.</p>
     </footer>
@@ -329,28 +315,28 @@
 
   <!-- Multi-Language JS -->
   <script>
-    // i18n Translation Dictionary (Supports automatic sync from Markdown)
+    // i18n Translation Dictionary for Terms Page
     const translations = {
       en: {
-        page_title: "NVR - Privacy Policy",
+        page_title: "NVR - Terms of Service",
         back_to_support: "Back to Support",
-        h1_title: "Privacy Policy",
+        h1_title: "Terms of Service",
         last_updated: "Last updated: May 23, 2026",
-        terms_link: "Terms of Service",
+        privacy_link: "Privacy Policy",
         copyright: "© 2026 Timozer. All rights reserved.",
         // [START_EN_CONTENT]
-        privacy_content: `<h2>1. 100% Localized Closed Loop</h2><p>Your privacy and security are paramount to us. NVR adopts a 100% localized closed-loop architecture. We solemnly promise: This software has no third-party cloud servers, and absolutely does not collect, cache, or upload any of your streaming video streams, monitoring sounds, recording files, or personal information. All data streams interact directly with cameras within your local network and are stored locally.</p><h2>2. Credential Security</h2><p>Sensitive credentials such as accounts, passwords, or IP addresses entered by you are directly stored in your iOS local sandbox or Apple system Keychain. This data is only used for local connection authentication.</p><h2>3. System Permission Calling</h2><p>To provide normal functions, this software needs to call the following system permissions:</p><ul><li><strong>[Local Network]</strong>: Used to discover and connect camera devices under the same Wi-Fi.</li><li><strong>[Photo Library]</strong>: Required when you save screenshots or videos to the system album.</li><li><strong>[File Sharing]</strong>: This software supports accessing your locally saved recordings through the system 'Files' app.</li></ul><h2>4. No Third-party SDK</h2><p>This software does not integrate any third-party commercial SDKs such as advertising tracking and behavioral data statistics, ensuring that the software runs absolutely pure and safe.</p>`
+        terms_content: `<h2>1. Service Description and Acceptance</h2><p>This User Service Agreement is an agreement between you and the NVR development team regarding your download, installation, and use of the NVR software. This software is a localized network camera management tool and does not provide cloud relay services. By installing and using this software, you fully read, understand, and accept all terms of this Agreement.</p><h2>2. Device Authorization and Compliant Use</h2><ul><li>Before connecting, monitoring, and recording any camera, users should ensure they have full legal control or authorization for the relevant hardware devices.</li><li>Users are strictly prohibited from using this software in any place that illegally prys into or infringes on the privacy of others. All legal consequences are borne by users themselves.</li></ul><h2>3. Local Storage and Resource Consumption</h2><ul><li>This software stores video on your local iOS device. Video storage will continue to consume your device's storage capacity. Please configure retention days reasonably.</li><li>Video decoding, playback, and recording are high-computing-intensive operations. It is normal for the device to heat up during use.</li></ul><h2>4. Disclaimer and Limitation of Liability</h2><ul><li>This software is provided 'as is', and developers do not guarantee that the software will run absolutely stably in all network environments.</li><li>In view of the non-absolute stability of wireless networks and camera hardware, data loss or damage caused by equipment aging, network fluctuations, power failure, or physical storage damage are not liable for compensation.</li></ul>`
         // [END_EN_CONTENT]
       },
       zh: {
-        page_title: "NVR - 隐私政策",
+        page_title: "NVR - 用户服务协议",
         back_to_support: "返回支持中心",
-        h1_title: "隐私政策",
+        h1_title: "用户服务协议",
         last_updated: "最近更新日期：2026年5月23日",
-        terms_link: "服务条款",
+        privacy_link: "隐私政策",
         copyright: "© 2026 Timozer. 所有权利保留。",
         // [START_ZH_CONTENT]
-        privacy_content: `<h2>一、 100% 本地化闭环</h2><p>您的隐私安全对我们至关重要。NVR 采用 100% 本地化闭环架构。我们向您郑重承诺：本软件未设立任何第三方云端服务器，绝对不收集、不缓存、不上传您的任何流媒体视频流、监控声音、录像文件或个人信息。所有数据流均在您的本地网络内直接与摄像头交互并本地存储。</p><h2>二、 凭证安全</h2><p>您在添加摄像头时输入的账号、密码或 IP 地址等敏感凭证，均直接存储在您的 iOS 本地沙盒或 Apple 系统 Keychain 中。这些数据仅用于本地 connection 鉴权，外界无任何途径获取。</p><h2>三、 系统权限调用</h2><p>为了提供正常的功能，本软件需要调用以下系统权限：</p><ul><li><strong><strong>【局域网/本地网络】</strong></strong>：用于发现和连接您相同 Wi-Fi 下的摄像头设备。</li><li><strong><strong>【照片库权限】</strong></strong>：当您保存截图或视频至系统相册时需要此权限。</li><li><strong><strong>【文件共享】</strong></strong>：本软件支持通过系统“文件”App访问您本地保存的录像。</li></ul><h2>四、 无第三方 SDK</h2><p>本软件未集成任何广告追踪、行为数据统计分析等侵害隐私的第三方商业化 SDK，确保软件运行绝对纯净安全。</p>`
+        terms_content: `<h2>一、 服务说明与接纳</h2><p>本《用户服务协议》是您与 NVR 开发团队之间关于您下载、安装并使用 NVR 软件所订立的协议。本软件为本地化网络摄像机管理工具，不提供云端中转服务。一旦您安装并使用本软件，即代表您已完全阅读、理解并接受本协议的全部条款。</p><h2>二、 设备授权与合规使用</h2><ul><li>用户在使用本软件连接、监控并录制任何摄像头前，应保证对相关硬件设备拥有完全合法的控制或使用授权。</li><li>用户严禁将本软件用于任何非法窥探或侵害他人隐私的场所。如因用户私自侵犯他人隐私或违反法律法规产生的全部法律后果，均由用户自行承担。</li></ul><h2>三、 本地存储与资源消耗</h2><ul><li>本软件将在您的 iOS 本地设备中存储视频。视频存储会持续消耗您的设备存储容量，请合理配置保留天数。</li><li>视频解码、播放和录制属于高算力密集操作，设备在使用过程中出现一定幅度的发热属于正常硬件物理特性。</li></ul><h2>四、 免责与责任限制</h2><ul><li>本软件按“现状”提供，开发者不保证软件在所有网络环境下均能绝对稳定运行。</li><li>鉴于无线网络和摄像头硬件的非绝对稳定性，由于设备老化、局域网波动、断电或物理储存损坏等因素造成的录像数据丢失或损坏，本软件不承担赔偿责任。</li></ul>`
         // [END_ZH_CONTENT]
       }
     };
