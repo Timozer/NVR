@@ -24,8 +24,6 @@
       --card-bg: rgba(255, 255, 255, 0.03);
       --card-border: rgba(255, 255, 255, 0.07);
       --card-hover-border: rgba(255, 255, 255, 0.15);
-      --input-bg: rgba(255, 255, 255, 0.02);
-      --input-border: rgba(255, 255, 255, 0.05);
       --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
       --font-title: 'Outfit', var(--font-sans);
       --glow-shadow: 0 0 25px rgba(139, 92, 246, 0.15);
@@ -286,113 +284,133 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Quick Contact Form */
-    .contact-form {
+    /* Contact & Support Card Styling */
+    .support-card-container {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .support-intro {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .support-mail-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 18px;
+      padding: 1.25rem 1.5rem;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 1.25rem;
+      position: relative;
+      margin-bottom: 2rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .form-group {
+    .support-mail-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(139, 92, 246, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .mail-icon-bg {
+      width: 48px;
+      height: 48px;
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .mail-card-svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent-purple);
+    }
+
+    .mail-info-group {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.2rem;
+      flex-grow: 1;
+      overflow: hidden;
     }
 
-    .form-label {
-      font-size: 0.85rem;
-      font-weight: 500;
+    .mail-label {
+      font-size: 0.75rem;
+      font-weight: 600;
       color: var(--text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    .form-input, .form-textarea {
-      font-family: var(--font-sans);
-      background: var(--input-bg);
-      border: 1px solid var(--input-border);
-      border-radius: 12px;
-      padding: 0.9rem 1.1rem;
-      color: var(--text-primary);
-      font-size: 0.95rem;
-      outline: none;
-      transition: all 0.3s ease;
-      width: 100%;
-    }
-
-    .form-input:focus, .form-textarea:focus {
-      border-color: var(--accent-purple);
-      background: rgba(255, 255, 255, 0.04);
-      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
-    }
-
-    .form-textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    /* Elegant gradient button */
-    .submit-btn {
-      font-family: var(--font-sans);
-      background: var(--accent-gradient);
-      border: none;
-      border-radius: 12px;
-      padding: 1rem;
-      color: white;
-      font-weight: 600;
+    .mail-address {
       font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+
+    .copy-mail-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 0.5rem 0.85rem;
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-      position: relative;
-      overflow: hidden;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      outline: none;
     }
 
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.45);
+    .copy-mail-btn:hover {
+      background: var(--accent-gradient);
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
     }
 
-    .submit-btn:active {
-      transform: translateY(0);
+    .copy-mail-btn.copied {
+      background: #10b981;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
     }
 
-    /* Support Info Box */
-    .support-info-box {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.9rem;
-      color: var(--text-secondary);
+    .copy-svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .support-meta-info {
       display: flex;
       flex-direction: column;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 1.5rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
       gap: 0.75rem;
     }
 
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .info-item svg {
+    .meta-item svg {
       stroke: var(--accent-blue);
       flex-shrink: 0;
-    }
-
-    .info-item a {
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    .info-item a:hover {
-      color: var(--accent-purple);
     }
 
     /* Footer Styling */
@@ -453,7 +471,7 @@
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
       max-width: 90vw;
-      width: 480px;
+      width: 420px;
     }
 
     .toast-notification.show {
@@ -548,8 +566,8 @@
       </svg>
     </div>
     <div class="toast-text-group">
-      <div class="toast-title" data-i18n="toast_title">Email Copied to Clipboard!</div>
-      <div class="toast-desc" data-i18n="toast_desc">We've copied zhenyuwang94@gmail.com and drafted your request. Opening Mail App...</div>
+      <div class="toast-title" data-i18n="toast_title">Copied!</div>
+      <div class="toast-desc" data-i18n="toast_desc">Email address zhenyuwang94@gmail.com has been copied to your clipboard.</div>
     </div>
   </div>
 
@@ -609,9 +627,7 @@
             </div>
           </details>
 
-
-
-          <!-- FAQ Item 4 -->
+          <!-- FAQ Item 3 (Formerly 4) -->
           <details class="faq-item" name="nvr-faq">
             <summary class="faq-summary" data-i18n="q4">Where are screenshots and recordings saved?</summary>
             <div class="faq-content">
@@ -619,7 +635,7 @@
             </div>
           </details>
 
-          <!-- FAQ Item 5 -->
+          <!-- FAQ Item 4 (Formerly 5) -->
           <details class="faq-item" name="nvr-faq">
             <summary class="faq-summary" data-i18n="q5">Are my cameras secure? Does NVR upload video streams?</summary>
             <div class="faq-content">
@@ -629,56 +645,48 @@
         </div>
       </section>
 
-      <!-- Contact & Support Section -->
-      <section class="glass-card">
+      <!-- Contact & Support Card Section -->
+      <section class="glass-card support-card-container">
         <h2 class="section-title">
           <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25" />
           </svg>
           <span data-i18n="contact_title">Get in Touch</span>
         </h2>
         
-        <form class="contact-form" id="supportForm">
-          <div class="form-group">
-            <label class="form-label" for="name" data-i18n="form_name">Your Name</label>
-            <input class="form-input" type="text" id="name" placeholder="John Doe" required>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label" for="email" data-i18n="form_email">Your Email Address</label>
-            <input class="form-input" type="email" id="email" placeholder="john@example.com" required>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label" for="subject" data-i18n="form_subject">Issue Subject</label>
-            <input class="form-input" type="text" id="subject" placeholder="e.g. Cannot connect camera" required>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label" for="message" data-i18n="form_message">How can we help?</label>
-            <textarea class="form-textarea" id="message" placeholder="Please describe the issue in detail..." required></textarea>
-          </div>
-
-          <button class="submit-btn" type="submit">
-            <span data-i18n="form_submit">Send Support Request</span>
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+        <p class="support-intro" data-i18n="support_intro">Have questions, feedback, or need technical assistance with NVR? Our support team is here to help you get the most out of your localized camera setup.</p>
+        
+        <div class="support-mail-card">
+          <div class="mail-icon-bg">
+            <svg class="mail-card-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
+          </div>
+          <div class="mail-info-group">
+            <span class="mail-label" data-i18n="info_email">Support Email</span>
+            <span class="mail-address">zhenyuwang94@gmail.com</span>
+          </div>
+          
+          <button class="copy-mail-btn" id="copyBtn" onclick="copyEmail()">
+            <svg class="copy-svg" id="copyIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v4.125c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V8.625c0-.621-.504-1.125-1.125-1.125H12" />
+            </svg>
+            <span class="copy-btn-text" id="copyText" data-i18n="copy_btn">Copy</span>
           </button>
-        </form>
+        </div>
 
-        <div class="support-info-box">
-          <div class="info-item">
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25" />
-            </svg>
-            <span><span data-i18n="info_email">Direct Email</span>: <a href="mailto:zhenyuwang94@gmail.com">zhenyuwang94@gmail.com</a></span>
-          </div>
-          <div class="info-item">
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="support-meta-info">
+          <div class="meta-item">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span data-i18n="info_time">Response Time: Typically within 24 hours</span>
+          </div>
+          <div class="meta-item">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span data-i18n="info_free">100% Free Technical Support</span>
           </div>
         </div>
       </section>
@@ -711,65 +719,49 @@
         a2_bullet2: "Make sure local network permissions are allowed for the NVR app in your iOS Settings (Privacy & Security -> Local Network -> NVR).",
         a2_bullet3: "Double-check the ONVIF or RTSP connection ports (ONVIF typically uses 80, 8000, or 8899, while RTSP stream uses 554).",
         a2_bullet4: "Ensure the camera's username and password entered in NVR match its configuration.",
-
         q4: "Where are screenshots and recordings saved?",
         a4: "Screenshots and manually recorded video clips are saved directly to your system's Photo Library for quick sharing. The app will prompt for Photo Library access when you trigger these actions for the first time. For continuous video recordings or manual exports, they are saved locally in the app's sandboxed filesystem. You can easily view, share, or download them through the iOS native \"Files\" app under the \"NVR\" folder.",
         q5: "Are my cameras secure? Does NVR upload video streams?",
         a5: "Your privacy and stream security are our top priorities. NVR is a 100% localized application. We do not run, maintain, or upload any video streams or credentials to cloud servers. All stream connections, authentication, video rendering, and storing processes happen entirely on your local device. Your video streams never leave your own network, ensuring ultimate peace of mind.",
         contact_title: "Get in Touch",
-        form_name: "Your Name",
-        form_email: "Your Email Address",
-        form_subject: "Issue Subject",
-        form_message: "How can we help?",
-        form_submit: "Send Support Request",
-        info_email: "Direct Email",
+        support_intro: "Have questions, feedback, or need technical assistance with NVR? Our support team is here to help you get the most out of your localized camera setup.",
+        info_email: "Support Email",
         info_time: "Response Time: Typically within 24 hours",
+        info_free: "100% Free Technical Support",
         privacy_link: "Privacy Policy",
         terms_link: "Terms of Service",
-        placeholder_name: "John Doe",
-        placeholder_email: "john@example.com",
-        placeholder_subject: "e.g. Cannot connect camera",
-        placeholder_message: "Please describe the issue in detail...",
-        alert_missing: "Please fill out all fields.",
-        email_intro: "Dear NVR Support Team,\n\nI am experiencing an issue with NVR. Here are the details:\n\n",
-        toast_title: "Email Copied to Clipboard!",
-        toast_desc: "We've copied zhenyuwang94@gmail.com and drafted your request. Opening Mail App..."
+        copy_btn: "Copy",
+        copy_btn_copied: "Copied!",
+        toast_title: "Copied!",
+        toast_desc: "Email address zhenyuwang94@gmail.com has been copied to your clipboard."
       },
       zh: {
         page_title: "NVR - 专业网络摄像机客户端官方支持中心",
         subtitle: "专业的 ONVIF 与 RTSP 监控摄像机客户端。高速、本地化运行、极度安全隐私。",
         faq_title: "常见问题解答",
         q1: "如何向 NVR 添加新摄像头？",
-        a1: "NVR 让添加摄像头变得极其简单。请确保您的摄像机设备和您的 iOS/Mac 设备连接在同一个 Wi-Fi 或局域网 (LAN) 内。进入“设置”，点击“发现摄像头”，NVR 将使用 ONVIF 协议自动扫描局域网。如果发现设备，只需点击一下即可立即添加。此外，您也可以通过手动输入 IP 地址、端口和登录凭据来手动添加 RTSP 或 ONVIF 摄像机。",
+        a1: "NVR 让添加摄像头变得极其简单。请确保您的摄像机设备和您的 iOS/Mac device 连接在同一个 Wi-Fi 或局域网 (LAN) 内。进入“设置”，点击“发现摄像头”，NVR 将使用 ONVIF 协议自动扫描局域网。如果发现设备，只需点击一下即可立即添加。此外，您也可以通过手动输入 IP 地址、端口和登录凭据来手动添加 RTSP 或 ONVIF 摄像机。",
         q2: "为什么我的摄像头显示离线或无法加载流媒体？",
         a2: "这通常是由于网络配置或凭据错误引起的。请排查以下几点：",
         a2_bullet1: "确认您的摄像头已正常开机并连接到了您的局域网中。",
         a2_bullet2: "确保已在 iOS 系统设置中允许 NVR 访问“本地网络”权限（设置 -> 隐私与安全性 -> 本地网络 -> 启用 NVR）。",
         a2_bullet3: "检查 ONVIF 或 RTSP 连接端口是否正确（ONVIF 协议通常使用 80, 8000 或 8899 端口，而 RTSP 码流一般使用 554 端口）。",
         a2_bullet4: "确保在 NVR 中为该摄像头输入的账号及密码与摄像头自身的后台配置完全一致。",
-
         q4: "截图和录制的视频保存在哪里？",
         a4: "截图和手动录制的视频剪辑会直接保存到您系统自带的“照片”图库中，方便快速分发分享。应用会在您首次点击保存时弹出申请系统照片库写入权限。对于持续录像或手动导出的监控录像，将保存在应用的独立沙盒中。您可以通过 iOS 系统自带的“文件”App，在“我的 iPhone/iPad/Mac” -> “NVR” 目录下随时随地进行预览、拷贝和下载。",
         q5: "我的摄像头视频流安全吗？NVR 会上传我的视频吗？",
         a5: "您的流媒体安全与隐私是我们的重中之重。NVR 是一款 100% 本地化运行的应用程序。**我们不运营、不维护、也不会将您的任何摄像头视频流或连接凭据上传到任何云端服务器。** 所有的连接握手、安全认证、视频解码渲染和录像保存均完全在您的本地设备上进行。您的视频流绝对不会流向外网，确保极致安心。",
         contact_title: "联系我们",
-        form_name: "您的姓名",
-        form_email: "您的电子邮箱",
-        form_subject: "反馈主题",
-        form_message: "我们能帮您什么？",
-        form_submit: "发送支持请求",
+        support_intro: "在使用 NVR 的过程中，如果您有任何问题、建议或需要技术协助，我们的技术支持团队随时乐意为您提供最纯粹的本地化服务。",
         info_email: "客服邮箱",
         info_time: "回复时效：通常在 24 小时之内",
+        info_free: "100% 免费专业技术支持",
         privacy_link: "隐私政策",
         terms_link: "服务条款",
-        placeholder_name: "例如：张三",
-        placeholder_email: "zhangsan@example.com",
-        placeholder_subject: "例如：局域网扫描不到摄像头",
-        placeholder_message: "请详细描述您遇到的问题或建议...",
-        alert_missing: "请填写所有必填字段。",
-        email_intro: "尊敬的 NVR 客服团队：\n\n我在使用 NVR 过程中遇到了以下问题，详情如下：\n\n",
-        toast_title: "客服邮箱已复制到剪贴板！",
-        toast_desc: "已为您自动复制 zhenyuwang94@gmail.com 并备妥正文。正在唤起邮件应用..."
+        copy_btn: "复制",
+        copy_btn_copied: "已复制",
+        toast_title: "复制成功！",
+        toast_desc: "客服邮箱 zhenyuwang94@gmail.com 已成功复制到您的系统剪贴板。"
       }
     };
 
@@ -804,12 +796,6 @@
           }
         });
         
-        // Apply inputs placeholders
-        document.getElementById('name').placeholder = t.placeholder_name;
-        document.getElementById('email').placeholder = t.placeholder_email;
-        document.getElementById('subject').placeholder = t.placeholder_subject;
-        document.getElementById('message').placeholder = t.placeholder_message;
-        
         container.classList.remove('fade-out');
       }, 200);
     }
@@ -843,66 +829,48 @@
       
       setTimeout(() => {
         toast.classList.remove('show');
-      }, 4500);
+      }, 3500);
     }
 
-    // Handle Form Submit with translated properties and copy-fallback
-    document.getElementById('supportForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
-      
+    // Copy Email to Clipboard with micro-animations
+    function copyEmail() {
+      const email = "zhenyuwang94@gmail.com";
       const t = translations[currentLang];
       
-      if (!name || !email || !subject || !message) {
-        alert(t.alert_missing);
-        return;
-      }
-      
-      const recipient = "zhenyuwang94@gmail.com";
-      
-      // Copy email to clipboard automatically as a robust fallback
+      // Copy to clipboard
       try {
-        navigator.clipboard.writeText(recipient);
+        navigator.clipboard.writeText(email);
       } catch (err) {
         // Fallback for non-https or unsupported clipboard environments
         const tempInput = document.createElement('input');
-        tempInput.value = recipient;
+        tempInput.value = email;
         document.body.appendChild(tempInput);
         tempInput.select();
         document.execCommand('copy');
         document.body.removeChild(tempInput);
       }
       
-      // Show gorgeous bilingual Toast notification
+      // Trigger Toast notification
       showToast();
       
-      // Auto compose email to support
-      const emailSubject = encodeURIComponent(`NVR App Support Request: ${subject}`);
-      const emailBody = encodeURIComponent(
-        `${t.email_intro}` +
-        `-----------------------------------------\n` +
-        `Name/姓名: ${name}\n` +
-        `Email/邮箱: ${email}\n` +
-        `Description/描述:\n${message}\n` +
-        `-----------------------------------------\n\n` +
-        `Sent via NVR Support Portal.`
-      );
+      // Change Button style temporarily
+      const copyBtn = document.getElementById('copyBtn');
+      const copyText = document.getElementById('copyText');
+      const copyIcon = document.getElementById('copyIcon');
       
-      // Construct mailto link
-      const mailtoUrl = `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
+      copyBtn.classList.add('copied');
+      copyText.innerText = t.copy_btn_copied;
       
-      // Open default mail client using a highly robust, sandboxed-safe invisible link click fallback
-      const mailLink = document.createElement('a');
-      mailLink.href = mailtoUrl;
-      mailLink.style.display = 'none';
-      document.body.appendChild(mailLink);
-      mailLink.click();
-      document.body.removeChild(mailLink);
-    });
+      // Temporary checkmark icon
+      const originalSvg = copyIcon.innerHTML;
+      copyIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />`;
+      
+      setTimeout(() => {
+        copyBtn.classList.remove('copied');
+        copyText.innerText = t.copy_btn;
+        copyIcon.innerHTML = originalSvg;
+      }, 2000);
+    }
   </script>
 </body>
 </html>
