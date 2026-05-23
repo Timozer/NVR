@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NVR - Professional Video Monitoring Support</title>
+  <title data-i18n="page_title">NVR - Professional Video Monitoring Support</title>
   <meta name="description" content="Support and Help Center for NVR app. Find answers to FAQs or get in touch with our support team.">
   
   <!-- Google Fonts -->
@@ -80,6 +80,46 @@
     @keyframes float {
       0% { transform: translate(0, 0) scale(1); }
       100% { transform: translate(3vw, 2vw) scale(1.05); }
+    }
+
+    /* Language Selector */
+    .lang-selector {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      display: flex;
+      gap: 0.25rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 0.3rem;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.35rem 0.75rem;
+      border-radius: 14px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lang-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .lang-btn.active {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     /* Container */
@@ -382,6 +422,16 @@
       color: var(--text-primary);
     }
 
+    /* Smooth translation fade classes */
+    .i18n-fade {
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .i18n-fade.fade-out {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+
     /* Responsive adjustments */
     @media (max-width: 900px) {
       .content-grid {
@@ -400,16 +450,27 @@
       header {
         margin-bottom: 3.5rem;
       }
+
+      .lang-selector {
+        top: 1.25rem;
+        right: 1.25rem;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Language Switcher -->
+  <div class="lang-selector">
+    <button class="lang-btn active" id="btnEn" onclick="switchLanguage('en')">EN</button>
+    <button class="lang-btn" id="btnZh" onclick="switchLanguage('zh')">中文</button>
+  </div>
+
   <!-- Background Ambient Glows -->
   <div class="bg-orb bg-orb-1"></div>
   <div class="bg-orb bg-orb-2"></div>
 
-  <div class="container">
+  <div class="container i18n-fade" id="i18nContainer">
     <!-- Header -->
     <header>
       <div class="logo-container">
@@ -427,7 +488,7 @@
         </svg>
       </div>
       <h1>NVR</h1>
-      <p class="subtitle">Professional Network Video Recorder Client for ONVIF & RTSP Cameras. Fast, localized, and ultra-secure.</p>
+      <p class="subtitle" data-i18n="subtitle">Professional Network Video Recorder Client for ONVIF & RTSP Cameras. Fast, localized, and ultra-secure.</p>
     </header>
 
     <!-- Content Layout -->
@@ -439,53 +500,53 @@
           <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12M8.25 17.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
           </svg>
-          Frequently Asked Questions
+          <span data-i18n="faq_title">Frequently Asked Questions</span>
         </h2>
         
         <div class="faq-list">
-          <!-- FAQ Item 1 (Uses exclusive details group in modern browsers) -->
+          <!-- FAQ Item 1 -->
           <details class="faq-item" name="nvr-faq" open>
-            <summary class="faq-summary">How do I add a new camera to NVR?</summary>
+            <summary class="faq-summary" data-i18n="q1">How do I add a new camera to NVR?</summary>
             <div class="faq-content">
-              <p>NVR makes adding cameras incredibly simple. Ensure your camera device and your iOS/Mac device are connected to the same Wi-Fi or Local Area Network (LAN). Go to Settings, click "Discover Cameras", and NVR will automatically scan the network using the ONVIF protocol. If discovered, tap on it to add it instantly. Alternatively, you can add RTSP or ONVIF cameras manually by entering their network IP addresses, ports, and login credentials.</p>
+              <p data-i18n="a1">NVR makes adding cameras incredibly simple. Ensure your camera device and your iOS/Mac device are connected to the same Wi-Fi or Local Area Network (LAN). Go to Settings, click "Discover Cameras", and NVR will automatically scan the network using the ONVIF protocol. If discovered, tap on it to add it instantly. Alternatively, you can add RTSP or ONVIF cameras manually by entering their network IP addresses, ports, and login credentials.</p>
             </div>
           </details>
 
           <!-- FAQ Item 2 -->
           <details class="faq-item" name="nvr-faq">
-            <summary class="faq-summary">Why is my camera showing offline or failing to load?</summary>
+            <summary class="faq-summary" data-i18n="q2">Why is my camera showing offline or failing to load?</summary>
             <div class="faq-content">
-              <p>This is usually due to network configuration or wrong credentials. Please check the following:</p>
-              <ul style="padding-left: 1.25rem; margin-top: 0.5rem;">
-                <li>Verify your camera is powered on and connected to your local network.</li>
-                <li>Make sure local network permissions are allowed for the NVR app in your iOS Settings (Privacy & Security -> Local Network -> NVR).</li>
-                <li>Double-check the ONVIF or RTSP connection ports (ONVIF typically uses 80, 8000, or 8899, while RTSP stream uses 554).</li>
-                <li>Ensure the camera's username and password entered in NVR match its configuration.</li>
+              <p data-i18n="a2">This is usually due to network configuration or wrong credentials. Please check the following:</p>
+              <ul style="padding-left: 1.25rem; margin-top: 0.5rem;" id="a2_bullets">
+                <li data-i18n="a2_bullet1">Verify your camera is powered on and connected to your local network.</li>
+                <li data-i18n="a2_bullet2">Make sure local network permissions are allowed for the NVR app in your iOS Settings (Privacy & Security -> Local Network -> NVR).</li>
+                <li data-i18n="a2_bullet3">Double-check the ONVIF or RTSP connection ports (ONVIF typically uses 80, 8000, or 8899, while RTSP stream uses 554).</li>
+                <li data-i18n="a2_bullet4">Ensure the camera's username and password entered in NVR match its configuration.</li>
               </ul>
             </div>
           </details>
 
           <!-- FAQ Item 3 -->
           <details class="faq-item" name="nvr-faq">
-            <summary class="faq-summary">Does NVR support PTZ (Pan-Tilt-Zoom) camera controls?</summary>
+            <summary class="faq-summary" data-i18n="q3">Does NVR support PTZ (Pan-Tilt-Zoom) camera controls?</summary>
             <div class="faq-content">
-              <p>Yes, NVR supports PTZ controls for motor-equipped ONVIF cameras. When viewing a camera's live stream, you can swipe across the screen in the direction you want to pan or tilt, or use the interactive control pad on screen. NVR also supports digital zooming by pinching-to-zoom on any stream, regardless of whether the camera is motorized.</p>
+              <p data-i18n="a3">Yes, NVR supports PTZ controls for motor-equipped ONVIF cameras. When viewing a camera's live stream, you can swipe across the screen in the direction you want to pan or tilt, or use the interactive control pad on screen. NVR also supports digital zooming by pinching-to-zoom on any stream, regardless of whether the camera is motorized.</p>
             </div>
           </details>
 
           <!-- FAQ Item 4 -->
           <details class="faq-item" name="nvr-faq">
-            <summary class="faq-summary">Where are screenshots and recordings saved?</summary>
+            <summary class="faq-summary" data-i18n="q4">Where are screenshots and recordings saved?</summary>
             <div class="faq-content">
-              <p>Screenshots and manually recorded video clips are saved directly to your system's Photo Library for quick sharing. The app will prompt for Photo Library access when you trigger these actions for the first time. For continuous video recordings or manual exports, they are saved locally in the app's sandboxed filesystem. You can easily view, share, or download them through the iOS native "Files" app under the "NVR" folder.</p>
+              <p data-i18n="a4">Screenshots and manually recorded video clips are saved directly to your system's Photo Library for quick sharing. The app will prompt for Photo Library access when you trigger these actions for the first time. For continuous video recordings or manual exports, they are saved locally in the app's sandboxed filesystem. You can easily view, share, or download them through the iOS native "Files" app under the "NVR" folder.</p>
             </div>
           </details>
 
           <!-- FAQ Item 5 -->
           <details class="faq-item" name="nvr-faq">
-            <summary class="faq-summary">Are my cameras secure? Does NVR upload video streams?</summary>
+            <summary class="faq-summary" data-i18n="q5">Are my cameras secure? Does NVR upload video streams?</summary>
             <div class="faq-content">
-              <p>Your privacy and stream security are our top priorities. NVR is a 100% localized application. <strong>We do not run, maintain, or upload any video streams or credentials to cloud servers.</strong> All stream connections, authentication, video rendering, and storing processes happen entirely on your local device. Your video streams never leave your own network, ensuring ultimate peace of mind.</p>
+              <p data-i18n="a5">Your privacy and stream security are our top priorities. NVR is a 100% localized application. <strong>We do not run, maintain, or upload any video streams or credentials to cloud servers.</strong> All stream connections, authentication, video rendering, and storing processes happen entirely on your local device. Your video streams never leave your own network, ensuring ultimate peace of mind.</p>
             </div>
           </details>
         </div>
@@ -497,32 +558,32 @@
           <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
           </svg>
-          Get in Touch
+          <span data-i18n="contact_title">Get in Touch</span>
         </h2>
         
         <form class="contact-form" id="supportForm">
           <div class="form-group">
-            <label class="form-label" for="name">Your Name</label>
+            <label class="form-label" for="name" data-i18n="form_name">Your Name</label>
             <input class="form-input" type="text" id="name" placeholder="John Doe" required>
           </div>
           
           <div class="form-group">
-            <label class="form-label" for="email">Your Email Address</label>
+            <label class="form-label" for="email" data-i18n="form_email">Your Email Address</label>
             <input class="form-input" type="email" id="email" placeholder="john@example.com" required>
           </div>
           
           <div class="form-group">
-            <label class="form-label" for="subject">Issue Subject</label>
+            <label class="form-label" for="subject" data-i18n="form_subject">Issue Subject</label>
             <input class="form-input" type="text" id="subject" placeholder="e.g. Cannot connect camera" required>
           </div>
           
           <div class="form-group">
-            <label class="form-label" for="message">How can we help?</label>
+            <label class="form-label" for="message" data-i18n="form_message">How can we help?</label>
             <textarea class="form-textarea" id="message" placeholder="Please describe the issue in detail..." required></textarea>
           </div>
 
           <button class="submit-btn" type="submit">
-            <span>Send Support Request</span>
+            <span data-i18n="form_submit">Send Support Request</span>
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
             </svg>
@@ -534,13 +595,13 @@
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25" />
             </svg>
-            <span>Direct Email: <a href="mailto:zhenyuwang94@gmail.com">zhenyuwang94@gmail.com</a></span>
+            <span><span data-i18n="info_email">Direct Email</span>: <a href="mailto:zhenyuwang94@gmail.com">zhenyuwang94@gmail.com</a></span>
           </div>
           <div class="info-item">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span>Response Time: Typically within 24 hours</span>
+            <span data-i18n="info_time">Response Time: Typically within 24 hours</span>
           </div>
         </div>
       </section>
@@ -550,14 +611,144 @@
     <!-- Footer -->
     <footer>
       <div class="footer-links">
-        <a class="footer-link" href="privacy.html">Privacy Policy</a>
+        <a class="footer-link" href="privacy.html" data-i18n="privacy_link">Privacy Policy</a>
       </div>
       <p>© 2026 Timozer. All rights reserved.</p>
     </footer>
   </div>
 
-  <!-- Form Interactivity JS -->
+  <!-- Form & Multi-Language JS -->
   <script>
+    // i18n Translation Dictionary
+    const translations = {
+      en: {
+        page_title: "NVR - Professional Video Monitoring Support",
+        subtitle: "Professional Network Video Recorder Client for ONVIF & RTSP Cameras. Fast, localized, and ultra-secure.",
+        faq_title: "Frequently Asked Questions",
+        q1: "How do I add a new camera to NVR?",
+        a1: "NVR makes adding cameras incredibly simple. Ensure your camera device and your iOS/Mac device are connected to the same Wi-Fi or Local Area Network (LAN). Go to Settings, click \"Discover Cameras\", and NVR will automatically scan the network using the ONVIF protocol. If discovered, tap on it to add it instantly. Alternatively, you can add RTSP or ONVIF cameras manually by entering their network IP addresses, ports, and login credentials.",
+        q2: "Why is my camera showing offline or failing to load?",
+        a2: "This is usually due to network configuration or wrong credentials. Please check the following:",
+        a2_bullet1: "Verify your camera is powered on and connected to your local network.",
+        a2_bullet2: "Make sure local network permissions are allowed for the NVR app in your iOS Settings (Privacy & Security -> Local Network -> NVR).",
+        a2_bullet3: "Double-check the ONVIF or RTSP connection ports (ONVIF typically uses 80, 8000, or 8899, while RTSP stream uses 554).",
+        a2_bullet4: "Ensure the camera's username and password entered in NVR match its configuration.",
+        q3: "Does NVR support PTZ (Pan-Tilt-Zoom) camera controls?",
+        a3: "Yes, NVR supports PTZ controls for motor-equipped ONVIF cameras. When viewing a camera's live stream, you can swipe across the screen in the direction you want to pan or tilt, or use the interactive control pad on screen. NVR also supports digital zooming by pinching-to-zoom on any stream, regardless of whether the camera is motorized.",
+        q4: "Where are screenshots and recordings saved?",
+        a4: "Screenshots and manually recorded video clips are saved directly to your system's Photo Library for quick sharing. The app will prompt for Photo Library access when you trigger these actions for the first time. For continuous video recordings or manual exports, they are saved locally in the app's sandboxed filesystem. You can easily view, share, or download them through the iOS native \"Files\" app under the \"NVR\" folder.",
+        q5: "Are my cameras secure? Does NVR upload video streams?",
+        a5: "Your privacy and stream security are our top priorities. NVR is a 100% localized application. We do not run, maintain, or upload any video streams or credentials to cloud servers. All stream connections, authentication, video rendering, and storing processes happen entirely on your local device. Your video streams never leave your own network, ensuring ultimate peace of mind.",
+        contact_title: "Get in Touch",
+        form_name: "Your Name",
+        form_email: "Your Email Address",
+        form_subject: "Issue Subject",
+        form_message: "How can we help?",
+        form_submit: "Send Support Request",
+        info_email: "Direct Email",
+        info_time: "Response Time: Typically within 24 hours",
+        privacy_link: "Privacy Policy",
+        placeholder_name: "John Doe",
+        placeholder_email: "john@example.com",
+        placeholder_subject: "e.g. Cannot connect camera",
+        placeholder_message: "Please describe the issue in detail...",
+        alert_missing: "Please fill out all fields.",
+        email_intro: "Dear NVR Support Team,\n\nI am experiencing an issue with NVR. Here are the details:\n\n"
+      },
+      zh: {
+        page_title: "NVR - 专业网络摄像机客户端官方支持中心",
+        subtitle: "专业的 ONVIF 与 RTSP 监控摄像机客户端。高速、本地化运行、极度安全隐私。",
+        faq_title: "常见问题解答",
+        q1: "如何向 NVR 添加新摄像头？",
+        a1: "NVR 让添加摄像头变得极其简单。请确保您的摄像机设备和您的 iOS/Mac 设备连接在同一个 Wi-Fi 或局域网 (LAN) 内。进入“设置”，点击“发现摄像头”，NVR 将使用 ONVIF 协议自动扫描局域网。如果发现设备，只需点击一下即可立即添加。此外，您也可以通过手动输入 IP 地址、端口和登录凭据来手动添加 RTSP 或 ONVIF 摄像机。",
+        q2: "为什么我的摄像头显示离线或无法加载流媒体？",
+        a2: "这通常是由于网络配置或凭据错误引起的。请排查以下几点：",
+        a2_bullet1: "确认您的摄像头已正常开机并连接到了您的局域网中。",
+        a2_bullet2: "确保已在 iOS 系统设置中允许 NVR 访问“本地网络”权限（设置 -> 隐私与安全性 -> 本地网络 -> 启用 NVR）。",
+        a2_bullet3: "检查 ONVIF 或 RTSP 连接端口是否正确（ONVIF 协议通常使用 80, 8000 或 8899 端口，而 RTSP 码流一般使用 554 端口）。",
+        a2_bullet4: "确保在 NVR 中为该摄像头输入的账号及密码与摄像头自身的后台配置完全一致。",
+        q3: "NVR 支持云台 (PTZ) 摄像头控制吗？",
+        a3: "支持。NVR 完全支持配备电机的 ONVIF 摄像头的云台控制。在查看实时流视频时，您可以在屏幕上滑动进行平移或倾斜操作，也可以使用屏幕上的虚拟控制盘。另外，NVR 支持双指捏合缩放（数字放大）任何画面流，无论摄像头本身是否配备电机。",
+        q4: "截图和录制的视频保存在哪里？",
+        a4: "截图和手动录制的视频剪辑会直接保存到您系统自带的“照片”图库中，方便快速分发分享。应用会在您首次点击保存时弹出申请系统照片库写入权限。对于持续录像或手动导出的监控录像，将保存在应用的独立沙盒中。您可以通过 iOS 系统自带的“文件”App，在“我的 iPhone/iPad/Mac” -> “NVR” 目录下随时随地进行预览、拷贝和下载。",
+        q5: "我的摄像头视频流安全吗？NVR 会上传我的视频吗？",
+        a5: "您的流媒体安全与隐私是我们的重中之重。NVR 是一款 100% 本地化运行的应用程序。**我们不运营、不维护、也不会将您的任何摄像头视频流或连接凭据上传到任何云端服务器。** 所有的连接握手、安全认证、视频解码渲染和录像保存均完全在您的本地设备上进行。您的视频流绝对不会流向外网，确保极致安心。",
+        contact_title: "联系我们",
+        form_name: "您的姓名",
+        form_email: "您的电子邮箱",
+        form_subject: "反馈主题",
+        form_message: "我们能帮您什么？",
+        form_submit: "发送支持请求",
+        info_email: "客服邮箱",
+        info_time: "回复时效：通常在 24 小时之内",
+        privacy_link: "隐私政策",
+        placeholder_name: "例如：张三",
+        placeholder_email: "zhangsan@example.com",
+        placeholder_subject: "例如：局域网扫描不到摄像头",
+        placeholder_message: "请详细描述您遇到的问题或建议...",
+        alert_missing: "请填写所有必填字段。",
+        email_intro: "尊敬的 NVR 客服团队：\n\n我在使用 NVR 过程中遇到了以下问题，详情如下：\n\n"
+      }
+    };
+
+    let currentLang = 'en';
+
+    // Set page language with smooth fade transition
+    function switchLanguage(lang) {
+      if (lang === currentLang) return;
+      
+      const container = document.getElementById('i18nContainer');
+      container.classList.add('fade-out');
+      
+      setTimeout(() => {
+        currentLang = lang;
+        localStorage.setItem('nvr_lang', lang);
+        
+        // Update active class on buttons
+        document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+        document.getElementById('btnZh').classList.toggle('active', lang === 'zh');
+        
+        // Apply translations
+        const t = translations[lang];
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) {
+            if (el.tagName === 'TITLE') {
+              document.title = t[key];
+            } else {
+              el.innerHTML = t[key];
+            }
+          }
+        });
+        
+        // Apply inputs placeholders
+        document.getElementById('name').placeholder = t.placeholder_name;
+        document.getElementById('email').placeholder = t.placeholder_email;
+        document.getElementById('subject').placeholder = t.placeholder_subject;
+        document.getElementById('message').placeholder = t.placeholder_message;
+        
+        container.classList.remove('fade-out');
+      }, 200);
+    }
+
+    // Auto-detect browser language or read stored preference
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('nvr_lang');
+      if (savedLang && (savedLang === 'en' || savedLang === 'zh')) {
+        switchLanguage(savedLang);
+      } else {
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang.toLowerCase().includes('zh')) {
+          switchLanguage('zh');
+        } else {
+          // Default is English, perfect for global App Store review
+          switchLanguage('en');
+        }
+      }
+    });
+
+    // Handle Form Submit with translated properties
     document.getElementById('supportForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -566,8 +757,10 @@
       const subject = document.getElementById('subject').value.trim();
       const message = document.getElementById('message').value.trim();
       
+      const t = translations[currentLang];
+      
       if (!name || !email || !subject || !message) {
-        alert('Please fill out all fields.');
+        alert(t.alert_missing);
         return;
       }
       
@@ -576,14 +769,13 @@
       const emailSubject = encodeURIComponent(`NVR App Support Request: ${subject}`);
       
       const emailBody = encodeURIComponent(
-        `Dear NVR Support Team,\n\n` +
-        `I am experiencing an issue with NVR. Here are the details:\n\n` +
+        `${t.email_intro}` +
         `-----------------------------------------\n` +
-        `Name: ${name}\n` +
-        `Contact Email: ${email}\n` +
-        `Issue Description:\n${message}\n` +
+        `Name/姓名: ${name}\n` +
+        `Email/邮箱: ${email}\n` +
+        `Description/描述:\n${message}\n` +
         `-----------------------------------------\n\n` +
-        `Sent via NVR App Support Portal.`
+        `Sent via NVR Support Portal.`
       );
       
       // Construct mailto link
