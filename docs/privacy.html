@@ -125,6 +125,14 @@
       max-width: 800px;
       margin: 0 auto;
       padding: 4rem 1.5rem;
+      opacity: 0; /* Pre-loading opacity to prevent translation flash */
+      transform: translateY(10px);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .container.initialized {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Back Link */
@@ -324,7 +332,7 @@
 
     <!-- Footer -->
     <footer>
-      <p>© 2026 Timozer. All rights reserved.</p>
+      <p data-i18n="copyright">© 2026 Timozer. All rights reserved.</p>
     </footer>
   </div>
 
@@ -354,7 +362,8 @@
         section_5_h2: "5. Changes to This Policy",
         section_5_p1: "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date above.",
         section_6_h2: "6. Contact Us",
-        section_6_p1: "If you have any questions or suggestions regarding our Privacy Policy, please do not hesitate to contact us directly at"
+        section_6_p1: "If you have any questions or suggestions regarding our Privacy Policy, please do not hesitate to contact us directly at",
+        copyright: "© 2026 Timozer. All rights reserved."
       },
       zh: {
         page_title: "NVR - 隐私政策",
@@ -364,7 +373,7 @@
         section_1_h2: "1. 概述",
         section_1_p1: "您的隐私对我们至关重要。本《隐私政策》概述了 <strong>NVR</strong> 应用程序如何处理您的数据。NVR 是一款专业的网络视频录像机客户端，旨在自动发现、播放和管理局域网中的 ONVIF 和 RTSP 监控摄像机。",
         section_2_h2: "2. 完全本地化处理（100% 离线独立运行）",
-        section_2_p1: "NVR 是一套完全本地化的独立客户端软件。**我们不运营、不维护任何云端服务器、用户账户、中转代理服务或云视频转码程序。**",
+        section_2_p1: "NVR 是一套完全本地化的独立客户端 software。**我们不运营、不维护任何云端服务器、用户账户、中转代理服务或云视频转码程序。**",
         section_2_li1: "<strong>无需账号：</strong> 您无需注册账户、登录或提供任何个人隐私信息即可直接运行该软件。",
         section_2_li2: "<strong>直接连接：</strong> 所有网络连接、握手交互与流媒体请求均完全在您的设备与您的局域网摄像头之间直接完成。您为摄像头输入的登录凭据（如用户名和密码）全部进行高强度加密并仅保存在您本地的安全钥匙串或沙盒数据库中。",
         section_2_li3: "<strong>无流媒体上传：</strong> NVR 绝不会传输、中转或截留您的摄像头视频流。您的监控视频数据绝对不会离开您的家庭或办公局域网。",
@@ -378,7 +387,8 @@
         section_5_h2: "5. 隐私政策的变更",
         section_5_p1: "我们可能会不时更新我们的《隐私政策》。任何关于政策的修改我们都将在本网页进行更新，并同步修正页面顶部的“最近更新日期”。",
         section_6_h2: "6. 联系我们",
-        section_6_p1: "如果您对本《隐私政策》有任何疑问、意见或建议，请随时通过以下电子邮箱直接与我们取得联系："
+        section_6_p1: "如果您对本《隐私政策》有任何疑问、意见或建议，请随时通过以下电子邮箱直接与我们取得联系：",
+        copyright: "© 2026 Timozer. 所有权利保留。"
       }
     };
 
@@ -386,10 +396,16 @@
 
     // Set page language with smooth fade transition
     function switchLanguage(lang) {
-      if (lang === currentLang) return;
-      
       const container = document.getElementById('i18nContainer');
-      container.classList.add('fade-out');
+      const isFirstLoad = !container.classList.contains('initialized');
+      
+      if (lang === currentLang && !isFirstLoad) return;
+      
+      if (!isFirstLoad) {
+        container.classList.add('fade-out');
+      }
+      
+      const delay = isFirstLoad ? 0 : 200;
       
       setTimeout(() => {
         currentLang = lang;
@@ -413,8 +429,14 @@
           }
         });
         
-        container.classList.remove('fade-out');
-      }, 200);
+        if (isFirstLoad) {
+          // Force layout flow before fading in the page smoothly
+          void container.offsetWidth;
+          container.classList.add('initialized');
+        } else {
+          container.classList.remove('fade-out');
+        }
+      }, delay);
     }
 
     // Auto-detect browser language or read stored preference
@@ -431,6 +453,14 @@
           switchLanguage('en');
         }
       }
+      
+      // Fallback fallback to ensure page displays even if JS fails
+      setTimeout(() => {
+        const container = document.getElementById('i18nContainer');
+        if (!container.classList.contains('initialized')) {
+          container.classList.add('initialized');
+        }
+      }, 500);
     });
   </script>
 </body>

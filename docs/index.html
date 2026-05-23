@@ -432,6 +432,71 @@
       transform: translateY(3px);
     }
 
+    /* Toast Notification (Bilingual Glassmorphism popup) */
+    .toast-notification {
+      position: fixed;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: rgba(10, 11, 16, 0.85);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), var(--glow-shadow);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      padding: 1.1rem 1.8rem;
+      border-radius: 20px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      max-width: 90vw;
+      width: 480px;
+    }
+
+    .toast-notification.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    .toast-icon-container {
+      width: 40px;
+      height: 40px;
+      background: rgba(139, 92, 246, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .toast-icon {
+      stroke: var(--accent-purple);
+      width: 22px;
+      height: 22px;
+    }
+
+    .toast-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .toast-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .toast-desc {
+      font-size: 0.825rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 900px) {
       .content-grid {
@@ -455,6 +520,11 @@
         top: 1.25rem;
         right: 1.25rem;
       }
+      
+      .toast-notification {
+        width: calc(100% - 2.5rem);
+        bottom: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -466,9 +536,22 @@
     <button class="lang-btn" id="btnZh" onclick="switchLanguage('zh')">中文</button>
   </div>
 
-  <!-- Background Ambient Glows -->
+  <!-- Ambient Background Glows -->
   <div class="bg-orb bg-orb-1"></div>
   <div class="bg-orb bg-orb-2"></div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast">
+    <div class="toast-icon-container">
+      <svg class="toast-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    </div>
+    <div class="toast-text-group">
+      <div class="toast-title" data-i18n="toast_title">Email Copied to Clipboard!</div>
+      <div class="toast-desc" data-i18n="toast_desc">We've copied zhenyuwang94@gmail.com and drafted your request. Opening Mail App...</div>
+    </div>
+  </div>
 
   <div class="container i18n-fade" id="i18nContainer">
     <!-- Header -->
@@ -653,7 +736,9 @@
         placeholder_subject: "e.g. Cannot connect camera",
         placeholder_message: "Please describe the issue in detail...",
         alert_missing: "Please fill out all fields.",
-        email_intro: "Dear NVR Support Team,\n\nI am experiencing an issue with NVR. Here are the details:\n\n"
+        email_intro: "Dear NVR Support Team,\n\nI am experiencing an issue with NVR. Here are the details:\n\n",
+        toast_title: "Email Copied to Clipboard!",
+        toast_desc: "We've copied zhenyuwang94@gmail.com and drafted your request. Opening Mail App..."
       },
       zh: {
         page_title: "NVR - 专业网络摄像机客户端官方支持中心",
@@ -687,7 +772,9 @@
         placeholder_subject: "例如：局域网扫描不到摄像头",
         placeholder_message: "请详细描述您遇到的问题或建议...",
         alert_missing: "请填写所有必填字段。",
-        email_intro: "尊敬的 NVR 客服团队：\n\n我在使用 NVR 过程中遇到了以下问题，详情如下：\n\n"
+        email_intro: "尊敬的 NVR 客服团队：\n\n我在使用 NVR 过程中遇到了以下问题，详情如下：\n\n",
+        toast_title: "客服邮箱已复制到剪贴板！",
+        toast_desc: "已为您自动复制 zhenyuwang94@gmail.com 并备妥正文。正在唤起邮件应用..."
       }
     };
 
@@ -748,7 +835,23 @@
       }
     });
 
-    // Handle Form Submit with translated properties
+    // Show Toast Notification
+    function showToast() {
+      const toast = document.getElementById('toast');
+      const t = translations[currentLang];
+      
+      // Update toast content dynamically to match language
+      toast.querySelector('[data-i18n="toast_title"]').innerText = t.toast_title;
+      toast.querySelector('[data-i18n="toast_desc"]').innerText = t.toast_desc;
+      
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4500);
+    }
+
+    // Handle Form Submit with translated properties and copy-fallback
     document.getElementById('supportForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -764,10 +867,26 @@
         return;
       }
       
-      // Auto compose email to support
       const recipient = "zhenyuwang94@gmail.com";
-      const emailSubject = encodeURIComponent(`NVR App Support Request: ${subject}`);
       
+      // Copy email to clipboard automatically as a robust fallback
+      try {
+        navigator.clipboard.writeText(recipient);
+      } catch (err) {
+        // Fallback for non-https or unsupported clipboard environments
+        const tempInput = document.createElement('input');
+        tempInput.value = recipient;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+      }
+      
+      // Show gorgeous bilingual Toast notification
+      showToast();
+      
+      // Auto compose email to support
+      const emailSubject = encodeURIComponent(`NVR App Support Request: ${subject}`);
       const emailBody = encodeURIComponent(
         `${t.email_intro}` +
         `-----------------------------------------\n` +
@@ -781,8 +900,10 @@
       // Construct mailto link
       const mailtoUrl = `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
       
-      // Open default mail client
-      window.location.href = mailtoUrl;
+      // Open default mail client (delayed slightly to allow toast animation to start smoothly)
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 300);
     });
   </script>
 </body>
