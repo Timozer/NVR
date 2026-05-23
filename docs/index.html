@@ -188,10 +188,9 @@
 
     /* Main Grid Layout */
     .content-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 3rem;
-      align-items: start;
     }
 
     /* Glassmorphism Card Style */
@@ -294,8 +293,7 @@
 
     /* Contact & Support Card Styling */
     .support-card-container {
-      position: sticky;
-      top: 2rem;
+      /* Fluid flow in vertical layout */
     }
 
     .support-intro {
