@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NVR - Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for NVR application. Learn how we handle your data and respect your privacy.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS Variables & Theme Setup (Kept in perfect sync with index.html) */
+    :root {
+      --bg-color: #0a0b10;
+      --bg-gradient: radial-gradient(circle at 50% 50%, #121320 0%, #06070a 100%);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent-purple: #8b5cf6;
+      --accent-blue: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.07);
+      --card-hover-border: rgba(255, 255, 255, 0.15);
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-title: 'Outfit', var(--font-sans);
+      --glow-shadow: 0 0 25px rgba(139, 92, 246, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-color);
+      background-image: var(--bg-gradient);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Background Orbs */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(130px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.1;
+      animation: float 25s ease-in-out infinite alternate;
+    }
+
+    .bg-orb-1 {
+      width: 45vw;
+      height: 45vw;
+      background: var(--accent-purple);
+      top: -10vw;
+      left: -10vw;
+    }
+
+    .bg-orb-2 {
+      width: 40vw;
+      height: 40vw;
+      background: var(--accent-blue);
+      bottom: -10vw;
+      right: -10vw;
+      animation-delay: -7s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(2vw, 3vw) scale(1.05); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    /* Back Link */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s ease;
+    }
+
+    .back-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .back-btn svg {
+      transition: transform 0.2s ease;
+    }
+
+    .back-btn:hover svg {
+      transform: translateX(-3px);
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 3.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-title);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #ffffff 50%, #e2e8f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .last-updated {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Glassmorphism Card for Content */
+    .content-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Privacy text styling */
+    h2 {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 0.5rem;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      font-size: 0.975rem;
+    }
+
+    ul, ol {
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+      font-size: 0.975rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Footer Styling */
+    footer {
+      text-align: center;
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 2.5rem 1.25rem;
+      }
+
+      .content-card {
+        padding: 2rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Ambient Glows -->
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+
+  <div class="container">
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      <span>Back to Support</span>
+    </a>
+
+    <!-- Header -->
+    <header>
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last updated: May 23, 2026</p>
+    </header>
+
+    <!-- Privacy Policy Document Card -->
+    <main class="content-card">
+      
+      <h2>1. Introduction</h2>
+      <p>Your privacy is of utmost importance to us. This Privacy Policy outlines how the <strong>NVR</strong> application handles your data. NVR is a professional network video recorder client designed to discover, stream, and manage local ONVIF and RTSP monitoring cameras.</p>
+      
+      <h2>2. Complete Local Processing (100% Offline)</h2>
+      <p>NVR is designed as a standalone, localized software client. <strong>We do NOT operate any cloud servers, user accounts, middleman services, or cloud-based stream transcoders.</strong></p>
+      <ul>
+        <li><strong>No Account Required:</strong> You do not need to register an account, sign in, or provide any personal details to use the application.</li>
+        <li><strong>Direct Connections:</strong> All connections, handshakes, and video stream requests occur directly between your device and your local IP camera. Your credentials (such as camera usernames and passwords) are encrypted and stored solely on your own device's secure local keychain/sandboxed database.</li>
+        <li><strong>No Stream Uploads:</strong> NVR never uploads, relays, or intercepts your camera stream data. Your surveillance video stays strictly inside your local home or office network.</li>
+      </ul>
+
+      <h2>3. Device Permissions & How They Are Used</h2>
+      <p>To provide video monitoring features, NVR requires specific system-level permissions. We only request permissions necessary for core operations:</p>
+      <ul>
+        <li><strong>Local Network Access:</strong> Required to scan, discover, configure, and communicate with IP cameras inside the same Wi-Fi or Local Area Network (LAN). Without this, NVR cannot connect to your cameras.</li>
+        <li><strong>Photo Library (Write Access):</strong> Required only when you explicitly press the "Save Snapshot" or "Record Clip" buttons. We use this permission solely to export these media files directly into your native Photos app.</li>
+        <li><strong>Files App / Sandboxed Storage:</strong> Required to store configuration files and manually exported continuous recording files locally on your device's sandbox.</li>
+      </ul>
+
+      <h2>4. No Analytics or Third-Party SDKs</h2>
+      <p>We do not bundle any advertising networks, tracking tools, behavioral analysis software, or third-party analytic services (such as Google Analytics or Flurry) inside our app. Your interactions with your cameras and within the app interface remain entirely private and anonymous.</p>
+
+      <h2>5. Changes to This Policy</h2>
+      <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date above.</p>
+
+      <h2>6. Contact Us</h2>
+      <p>If you have any questions or suggestions regarding our Privacy Policy, please do not hesitate to contact us directly at <a href="mailto:zhenyuwang94@gmail.com" style="color: var(--accent-purple); text-decoration: none; font-weight: 500;">zhenyuwang94@gmail.com</a>.</p>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 Timozer. All rights reserved.</p>
+    </footer>
+  </div>
+
+</body>
+</html>

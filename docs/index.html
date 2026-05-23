@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NVR - Professional Video Monitoring Support</title>
+  <meta name="description" content="Support and Help Center for NVR app. Find answers to FAQs or get in touch with our support team.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS Variables & Theme Setup */
+    :root {
+      --bg-color: #0a0b10;
+      --bg-gradient: radial-gradient(circle at 50% 50%, #121320 0%, #06070a 100%);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent-purple: #8b5cf6;
+      --accent-blue: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.07);
+      --card-hover-border: rgba(255, 255, 255, 0.15);
+      --input-bg: rgba(255, 255, 255, 0.02);
+      --input-border: rgba(255, 255, 255, 0.05);
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-title: 'Outfit', var(--font-sans);
+      --glow-shadow: 0 0 25px rgba(139, 92, 246, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-color);
+      background-image: var(--bg-gradient);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Background Orbs */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(130px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.12;
+      animation: float 20s ease-in-out infinite alternate;
+    }
+
+    .bg-orb-1 {
+      width: 45vw;
+      height: 45vw;
+      background: var(--accent-purple);
+      top: -10vw;
+      left: -10vw;
+    }
+
+    .bg-orb-2 {
+      width: 40vw;
+      height: 40vw;
+      background: var(--accent-blue);
+      bottom: -10vw;
+      right: -10vw;
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(3vw, 2vw) scale(1.05); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    /* Header Styling */
+    header {
+      text-align: center;
+      margin-bottom: 5rem;
+      position: relative;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--glow-shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .logo-svg {
+      width: 42px;
+      height: 42px;
+      fill: none;
+      stroke: url(#logo-grad);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    h1 {
+      font-family: var(--font-title);
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #ffffff 30%, #e2e8f0 70%, rgba(255, 255, 255, 0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* Main Grid Layout */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Glassmorphism Card Style */
+    .glass-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      border-color: var(--card-hover-border);
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title svg {
+      stroke: var(--accent-purple);
+    }
+
+    /* FAQ (Accordion using native <details> with name) */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--input-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .faq-item[open] {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(139, 92, 246, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .faq-summary {
+      list-style: none;
+      padding: 1.25rem 1.5rem;
+      font-weight: 500;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      outline: none;
+    }
+
+    /* Custom caret */
+    .faq-summary::after {
+      content: '';
+      width: 18px;
+      height: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item[open] .faq-summary::after {
+      transform: rotate(180deg);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23c084fc' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+    }
+
+    /* Modern scrollbar and detail transitions */
+    .faq-content {
+      padding: 0 1.5rem 1.5rem 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.975rem;
+      line-height: 1.7;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      padding-top: 1rem;
+      animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Quick Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input, .form-textarea {
+      font-family: var(--font-sans);
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent-purple);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Elegant gradient button */
+    .submit-btn {
+      font-family: var(--font-sans);
+      background: var(--accent-gradient);
+      border: none;
+      border-radius: 12px;
+      padding: 1rem;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.45);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Support Info Box */
+    .support-info-box {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-item svg {
+      stroke: var(--accent-blue);
+      flex-shrink: 0;
+    }
+
+    .info-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .info-item a:hover {
+      color: var(--accent-purple);
+    }
+
+    /* Footer Styling */
+    footer {
+      text-align: center;
+      margin-top: 6rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--text-primary);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      
+      .container {
+        padding: 2.5rem 1.25rem;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      header {
+        margin-bottom: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Ambient Glows -->
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo-container">
+        <svg class="logo-svg" viewBox="0 0 24 24">
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8b5cf6" />
+              <stop offset="100%" stop-color="#3b82f6" />
+            </linearGradient>
+          </defs>
+          <!-- Elegant video camera icon -->
+          <path d="M23 7l-7 5 7 5V7z" />
+          <rect x="1" y="5" width="15" height="14" rx="3" ry="3" />
+          <circle cx="8" cy="12" r="2" />
+        </svg>
+      </div>
+      <h1>NVR</h1>
+      <p class="subtitle">Professional Network Video Recorder Client for ONVIF & RTSP Cameras. Fast, localized, and ultra-secure.</p>
+    </header>
+
+    <!-- Content Layout -->
+    <main class="content-grid">
+      
+      <!-- FAQ Section -->
+      <section class="glass-card">
+        <h2 class="section-title">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12M8.25 17.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+          Frequently Asked Questions
+        </h2>
+        
+        <div class="faq-list">
+          <!-- FAQ Item 1 (Uses exclusive details group in modern browsers) -->
+          <details class="faq-item" name="nvr-faq" open>
+            <summary class="faq-summary">How do I add a new camera to NVR?</summary>
+            <div class="faq-content">
+              <p>NVR makes adding cameras incredibly simple. Ensure your camera device and your iOS/Mac device are connected to the same Wi-Fi or Local Area Network (LAN). Go to Settings, click "Discover Cameras", and NVR will automatically scan the network using the ONVIF protocol. If discovered, tap on it to add it instantly. Alternatively, you can add RTSP or ONVIF cameras manually by entering their network IP addresses, ports, and login credentials.</p>
+            </div>
+          </details>
+
+          <!-- FAQ Item 2 -->
+          <details class="faq-item" name="nvr-faq">
+            <summary class="faq-summary">Why is my camera showing offline or failing to load?</summary>
+            <div class="faq-content">
+              <p>This is usually due to network configuration or wrong credentials. Please check the following:</p>
+              <ul style="padding-left: 1.25rem; margin-top: 0.5rem;">
+                <li>Verify your camera is powered on and connected to your local network.</li>
+                <li>Make sure local network permissions are allowed for the NVR app in your iOS Settings (Privacy & Security -> Local Network -> NVR).</li>
+                <li>Double-check the ONVIF or RTSP connection ports (ONVIF typically uses 80, 8000, or 8899, while RTSP stream uses 554).</li>
+                <li>Ensure the camera's username and password entered in NVR match its configuration.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- FAQ Item 3 -->
+          <details class="faq-item" name="nvr-faq">
+            <summary class="faq-summary">Does NVR support PTZ (Pan-Tilt-Zoom) camera controls?</summary>
+            <div class="faq-content">
+              <p>Yes, NVR supports PTZ controls for motor-equipped ONVIF cameras. When viewing a camera's live stream, you can swipe across the screen in the direction you want to pan or tilt, or use the interactive control pad on screen. NVR also supports digital zooming by pinching-to-zoom on any stream, regardless of whether the camera is motorized.</p>
+            </div>
+          </details>
+
+          <!-- FAQ Item 4 -->
+          <details class="faq-item" name="nvr-faq">
+            <summary class="faq-summary">Where are screenshots and recordings saved?</summary>
+            <div class="faq-content">
+              <p>Screenshots and manually recorded video clips are saved directly to your system's Photo Library for quick sharing. The app will prompt for Photo Library access when you trigger these actions for the first time. For continuous video recordings or manual exports, they are saved locally in the app's sandboxed filesystem. You can easily view, share, or download them through the iOS native "Files" app under the "NVR" folder.</p>
+            </div>
+          </details>
+
+          <!-- FAQ Item 5 -->
+          <details class="faq-item" name="nvr-faq">
+            <summary class="faq-summary">Are my cameras secure? Does NVR upload video streams?</summary>
+            <div class="faq-content">
+              <p>Your privacy and stream security are our top priorities. NVR is a 100% localized application. <strong>We do not run, maintain, or upload any video streams or credentials to cloud servers.</strong> All stream connections, authentication, video rendering, and storing processes happen entirely on your local device. Your video streams never leave your own network, ensuring ultimate peace of mind.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Contact & Support Section -->
+      <section class="glass-card">
+        <h2 class="section-title">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+          Get in Touch
+        </h2>
+        
+        <form class="contact-form" id="supportForm">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input class="form-input" type="text" id="name" placeholder="John Doe" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="email">Your Email Address</label>
+            <input class="form-input" type="email" id="email" placeholder="john@example.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="subject">Issue Subject</label>
+            <input class="form-input" type="text" id="subject" placeholder="e.g. Cannot connect camera" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="message">How can we help?</label>
+            <textarea class="form-textarea" id="message" placeholder="Please describe the issue in detail..." required></textarea>
+          </div>
+
+          <button class="submit-btn" type="submit">
+            <span>Send Support Request</span>
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+            </svg>
+          </button>
+        </form>
+
+        <div class="support-info-box">
+          <div class="info-item">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25" />
+            </svg>
+            <span>Direct Email: <a href="mailto:zhenyuwang94@gmail.com">zhenyuwang94@gmail.com</a></span>
+          </div>
+          <div class="info-item">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Response Time: Typically within 24 hours</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-links">
+        <a class="footer-link" href="privacy.html">Privacy Policy</a>
+      </div>
+      <p>© 2026 Timozer. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Form Interactivity JS -->
+  <script>
+    document.getElementById('supportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if (!name || !email || !subject || !message) {
+        alert('Please fill out all fields.');
+        return;
+      }
+      
+      // Auto compose email to support
+      const recipient = "zhenyuwang94@gmail.com";
+      const emailSubject = encodeURIComponent(`NVR App Support Request: ${subject}`);
+      
+      const emailBody = encodeURIComponent(
+        `Dear NVR Support Team,\n\n` +
+        `I am experiencing an issue with NVR. Here are the details:\n\n` +
+        `-----------------------------------------\n` +
+        `Name: ${name}\n` +
+        `Contact Email: ${email}\n` +
+        `Issue Description:\n${message}\n` +
+        `-----------------------------------------\n\n` +
+        `Sent via NVR App Support Portal.`
+      );
+      
+      // Construct mailto link
+      const mailtoUrl = `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
+      
+      // Open default mail client
+      window.location.href = mailtoUrl;
+    });
+  </script>
+</body>
+</html>
