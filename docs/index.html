@@ -895,10 +895,13 @@
       // Construct mailto link
       const mailtoUrl = `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
       
-      // Open default mail client (delayed slightly to allow toast animation to start smoothly)
-      setTimeout(() => {
-        window.location.href = mailtoUrl;
-      }, 300);
+      // Open default mail client using a highly robust, sandboxed-safe invisible link click fallback
+      const mailLink = document.createElement('a');
+      mailLink.href = mailtoUrl;
+      mailLink.style.display = 'none';
+      document.body.appendChild(mailLink);
+      mailLink.click();
+      document.body.removeChild(mailLink);
     });
   </script>
 </body>
