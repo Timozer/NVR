@@ -192,7 +192,7 @@
     }
 
     /* Privacy text styling */
-    h2 {
+    .content-card h2 {
       font-family: var(--font-title);
       font-size: 1.4rem;
       font-weight: 600;
@@ -203,28 +203,28 @@
       padding-bottom: 0.5rem;
     }
 
-    h2:first-of-type {
+    .content-card h2:first-of-type {
       margin-top: 0;
     }
 
-    p {
+    .content-card p {
       color: var(--text-secondary);
       margin-bottom: 1.25rem;
       font-size: 0.975rem;
     }
 
-    ul, ol {
+    .content-card ul, .content-card ol {
       color: var(--text-secondary);
       margin-bottom: 1.25rem;
       padding-left: 1.5rem;
       font-size: 0.975rem;
     }
 
-    li {
+    .content-card li {
       margin-bottom: 0.5rem;
     }
 
-    strong {
+    .content-card strong {
       color: var(--text-primary);
       font-weight: 600;
     }
@@ -297,26 +297,24 @@
       <p class="last-updated" data-i18n="last_updated">Last updated: May 23, 2026</p>
     </header>
 
-    <!-- Privacy Policy Document Card -->
-    <main class="content-card">
+    <!-- Privacy Policy Document Card (Automatically populated by script) -->
+    <main class="content-card" id="privacyContent" data-i18n="privacy_content">
+      <h2>1. 100% Localized Closed Loop</h2>
+      <p>Your privacy and security are paramount to us. NVR adopts a 100% localized closed-loop architecture. We solemnly promise: This software has no third-party cloud servers, and absolutely does not collect, cache, or upload any of your streaming video streams, monitoring sounds, recording files, or personal information. All data streams interact directly with cameras within your local network and are stored locally.</p>
       
-      <h2 data-i18n="section_1_h2">1. 100% Localized Closed Loop</h2>
-      <p data-i18n="section_1_p1">Your privacy and security are paramount to us. NVR adopts a 100% localized closed-loop architecture. We solemnly promise: This software has no third-party cloud servers, and absolutely does not collect, cache, or upload any of your streaming video streams, monitoring sounds, recording files, or personal information. All data streams interact directly with cameras within your local network and are stored locally.</p>
-      
-      <h2 data-i18n="section_2_h2">2. Credential Security</h2>
-      <p data-i18n="section_2_p1">Sensitive credentials such as accounts, passwords, or IP addresses entered by you are directly stored in your iOS local sandbox or Apple system Keychain. This data is only used for local connection authentication.</p>
+      <h2>2. Credential Security</h2>
+      <p>Sensitive credentials such as accounts, passwords, or IP addresses entered by you are directly stored in your iOS local sandbox or Apple system Keychain. This data is only used for local connection authentication.</p>
 
-      <h2 data-i18n="section_3_h2">3. System Permission Calling</h2>
-      <p data-i18n="section_3_p1">To provide normal functions, this software needs to call the following system permissions:</p>
+      <h2>3. System Permission Calling</h2>
+      <p>To provide normal functions, this software needs to call the following system permissions:</p>
       <ul>
-        <li data-i18n="section_3_li1"><strong>[Local Network]:</strong> Used to discover and connect camera devices under the same Wi-Fi.</li>
-        <li data-i18n="section_3_li2"><strong>[Photo Library]:</strong> Required when you save screenshots or videos to the system album.</li>
-        <li data-i18n="section_3_li3"><strong>[File Sharing]:</strong> This software supports accessing your locally saved recordings through the system 'Files' app.</li>
+        <li><strong>[Local Network]:</strong> Used to discover and connect camera devices under the same Wi-Fi.</li>
+        <li><strong>[Photo Library]:</strong> Required when you save screenshots or videos to the system album.</li>
+        <li><strong>[File Sharing]:</strong> This software supports accessing your locally saved recordings through the system 'Files' app.</li>
       </ul>
 
-      <h2 data-i18n="section_4_h2">4. No Third-party SDK</h2>
-      <p data-i18n="section_4_p1">This software does not integrate any third-party commercial SDKs such as advertising tracking and behavioral data statistics, ensuring that the software runs absolutely pure and safe.</p>
-
+      <h2>4. No Third-party SDK</h2>
+      <p>This software does not integrate any third-party commercial SDKs such as advertising tracking and behavioral data statistics, ensuring that the software runs absolutely pure and safe.</p>
     </main>
 
     <!-- Footer -->
@@ -327,43 +325,27 @@
 
   <!-- Multi-Language JS -->
   <script>
-    // i18n Translation Dictionary based exactly on existing NVR/PRIVACY.md
+    // i18n Translation Dictionary (Supports automatic sync from Markdown)
     const translations = {
       en: {
         page_title: "NVR - Privacy Policy",
         back_to_support: "Back to Support",
         h1_title: "Privacy Policy",
         last_updated: "Last updated: May 23, 2026",
-        section_1_h2: "1. 100% Localized Closed Loop",
-        section_1_p1: "Your privacy and security are paramount to us. NVR adopts a 100% localized closed-loop architecture. We solemnly promise: This software has no third-party cloud servers, and absolutely does not collect, cache, or upload any of your streaming video streams, monitoring sounds, recording files, or personal information. All data streams interact directly with cameras within your local network and are stored locally.",
-        section_2_h2: "2. Credential Security",
-        section_2_p1: "Sensitive credentials such as accounts, passwords, or IP addresses entered by you are directly stored in your iOS local sandbox or Apple system Keychain. This data is only used for local connection authentication.",
-        section_3_h2: "3. System Permission Calling",
-        section_3_p1: "To provide normal functions, this software needs to call the following system permissions:",
-        section_3_li1: "<strong>[Local Network]:</strong> Used to discover and connect camera devices under the same Wi-Fi.",
-        section_3_li2: "<strong>[Photo Library]:</strong> Required when you save screenshots or videos to the system album.",
-        section_3_li3: "<strong>[File Sharing]:</strong> This software supports accessing your locally saved recordings through the system 'Files' app.",
-        section_4_h2: "4. No Third-party SDK",
-        section_4_p1: "This software does not integrate any third-party commercial SDKs such as advertising tracking and behavioral data statistics, ensuring that the software runs absolutely pure and safe.",
-        copyright: "© 2026 Timozer. All rights reserved."
+        copyright: "© 2026 Timozer. All rights reserved.",
+        // [START_EN_CONTENT]
+        privacy_content: `<h2>1. 100% Localized Closed Loop</h2><p>Your privacy and security are paramount to us. NVR adopts a 100% localized closed-loop architecture. We solemnly promise: This software has no third-party cloud servers, and absolutely does not collect, cache, or upload any of your streaming video streams, monitoring sounds, recording files, or personal information. All data streams interact directly with cameras within your local network and are stored locally.</p><h2>2. Credential Security</h2><p>Sensitive credentials such as accounts, passwords, or IP addresses entered by you are directly stored in your iOS local sandbox or Apple system Keychain. This data is only used for local connection authentication.</p><h2>3. System Permission Calling</h2><p>To provide normal functions, this software needs to call the following system permissions:</p><ul><li><strong>[Local Network]</strong>: Used to discover and connect camera devices under the same Wi-Fi.</li><li><strong>[Photo Library]</strong>: Required when you save screenshots or videos to the system album.</li><li><strong>[File Sharing]</strong>: This software supports accessing your locally saved recordings through the system 'Files' app.</li></ul><h2>4. No Third-party SDK</h2><p>This software does not integrate any third-party commercial SDKs such as advertising tracking and behavioral data statistics, ensuring that the software runs absolutely pure and safe.</p>`
+        // [END_EN_CONTENT]
       },
       zh: {
         page_title: "NVR - 隐私政策",
         back_to_support: "返回支持中心",
         h1_title: "隐私政策",
         last_updated: "最近更新日期：2026年5月23日",
-        section_1_h2: "一、 100% 本地化闭环",
-        section_1_p1: "您的隐私安全对我们至关重要。NVR 采用 100% 本地化闭环架构。我们向您郑重承诺：本软件未设立任何第三方云端服务器，绝对不收集、不缓存、不上传您的任何流媒体视频流、监控声音、录像文件或个人信息。所有数据流均在您的本地网络内直接与摄像头交互并本地存储。",
-        section_2_h2: "二、 凭证安全",
-        section_2_p1: "您在添加摄像头时输入的账号、密码或 IP 地址等敏感凭证，均直接存储在您的 iOS 本地沙盒或 Apple 系统 Keychain 中。这些数据仅用于本地连接鉴权，外界无任何途径获取。",
-        section_3_h2: "三、 系统权限调用",
-        section_3_p1: "为了提供正常的功能，本软件需要调用以下系统权限：",
-        section_3_li1: "<strong>【局域网/本地网络】：</strong>用于发现和连接您相同 Wi-Fi 下的摄像头设备。",
-        section_3_li2: "<strong>【照片库权限】：</strong>当您保存截图或视频至系统相册时需要此权限。",
-        section_3_li3: "<strong>【文件共享】：</strong>本软件支持通过系统“文件”App访问您本地保存的录像。",
-        section_4_h2: "四、 无第三方 SDK",
-        section_4_p1: "本软件未集成任何广告追踪、行为数据统计分析等侵害隐私的第三方商业化 SDK，确保软件运行绝对纯净安全。",
-        copyright: "© 2026 Timozer. 所有权利保留。"
+        copyright: "© 2026 Timozer. 所有权利保留。",
+        // [START_ZH_CONTENT]
+        privacy_content: `<h2>一、 100% 本地化闭环</h2><p>您的隐私安全对我们至关重要。NVR 采用 100% 本地化闭环架构。我们向您郑重承诺：本软件未设立任何第三方云端服务器，绝对不收集、不缓存、不上传您的任何流媒体视频流、监控声音、录像文件或个人信息。所有数据流均在您的本地网络内直接与摄像头交互并本地存储。</p><h2>二、 凭证安全</h2><p>您在添加摄像头时输入的账号、密码或 IP 地址等敏感凭证，均直接存储在您的 iOS 本地沙盒或 Apple 系统 Keychain 中。这些数据仅用于本地 connection 鉴权，外界无任何途径获取。</p><h2>三、 系统权限调用</h2><p>为了提供正常的功能，本软件需要调用以下系统权限：</p><ul><li><strong><strong>【局域网/本地网络】</strong></strong>：用于发现和连接您相同 Wi-Fi 下的摄像头设备。</li><li><strong><strong>【照片库权限】</strong></strong>：当您保存截图或视频至系统相册时需要此权限。</li><li><strong><strong>【文件共享】</strong></strong>：本软件支持通过系统“文件”App访问您本地保存的录像。</li></ul><h2>四、 无第三方 SDK</h2><p>本软件未集成任何广告追踪、行为数据统计分析等侵害隐私的第三方商业化 SDK，确保软件运行绝对纯净安全。</p>`
+        // [END_ZH_CONTENT]
       }
     };
 
